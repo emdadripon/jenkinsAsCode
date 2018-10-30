@@ -18,22 +18,22 @@ pipeline {
             }
 
         }
-    }
-        stage('Deploy to Production'){
-            Steps{
-                timeout(time:5, unit:'DAYS'){
-                    input message:'Approve PRODUCTION Deployment?'
+
+        stage('Deploy to Production') {
+            steps {
+                timeout(time: 5, unit: 'DAYS') {
+                    input message: 'Approve PRODUCTION Deployment?'
                 }
                 build job: 'Deploy-to-Prod'
             }
-            post{
-                success{
+            post {
+                success {
                     echo 'Code deloyed to Production.'
                 }
-                failure{
+                failure {
                     echo 'Deployment failed.'
                 }
             }
         }
-    
+    }
 }
