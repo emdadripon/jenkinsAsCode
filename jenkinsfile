@@ -12,12 +12,13 @@ pipeline {
                 }
             }
         }
-        stage('Deploy to Staging'){
-            steps{
+        stage('Deploy to Staging') {
+            steps {
                 build job: 'Deploy-to-staging'
             }
 
         }
+    }
         stage('Deploy to Production'){
             Steps{
                 timeout(time:5, unit:'DAYS'){
@@ -34,5 +35,5 @@ pipeline {
                 }
             }
         }
-    }
+    
 }
